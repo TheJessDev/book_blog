@@ -1,6 +1,6 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from .models import Post
-
+from django.urls import path
 
 class PostListView(ListView):
     # published posts
@@ -13,6 +13,11 @@ class PostListView(ListView):
         context["object_list"] = context["post_list"]
         return context
 
+class PostCreateView(CreateView):
+    template_name = "posts/create_post.html"
+    model = Post
+    fields = ["book_title", "book_author", "post_author", "body"]
+    
 
 
 

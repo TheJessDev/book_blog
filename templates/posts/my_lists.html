@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block title %}List Home{% endblock title %}
+
+
+{% block content %}
+<h1>Check out these reviews!</h1>
+
+
+
+<div class="row">
+    {% for post in object_list %}
+        
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.book_title }}</h5>
+                        <p class="card-text">{{ post.body | truncatechars:90 }}<a href="{% url 'details' post.pk %}"> Read more</a></p>
+
+                        <a href="{% url 'edit' post.pk %}" class="btn btn-primary">Edit</a>
+                    </div>
+                </div>
+            </div>
+            {% if object_list.length == 0 %}
+                <h2>Create a Review</h2>
+                <a href="{% url 'new' %}" class="btn btn-primary">Create</a>
+            {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

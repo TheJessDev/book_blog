@@ -1,4 +1,6 @@
-.navbar navbar-expand-lg bg-body-tertiary mynav {
-    font-family: 'Short Stack', cursive;
-    color:red;
+.navbar .base{
+    font-family: 'Short Stack', cursive !important;
+    color:lightblue !important;
+    background-color: grey !important;
 }
+

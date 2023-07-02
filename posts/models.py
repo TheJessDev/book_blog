@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.urls import path, reverse
+from django.urls import reverse
 
 
 class Status(models.Model):
@@ -26,7 +26,7 @@ class Post(models.Model):
     )
 
     def __str__(self):
-        return self.title
+        return self.book_title
 
     def get_absolute_url(self):
-        return reverse("posts_details", args=[self.id])
+        return reverse("details", args=[self.id])

@@ -7,6 +7,25 @@ from django.views.generic import (
 from .models import Post
 from django.urls import path
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect
+
+
+
+class LoginView(LoginView):
+    template_name = 'posts/login.html'
+
+    def form_valid(self, form):
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(self.request, user)
+            return redirect('home')
+
+        return self.form_invalid(form)
 
 
 

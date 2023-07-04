@@ -27,10 +27,13 @@
                 <a class="navbar-brand text-white" href="{% url 'home' %}">Book Blog</a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{% url 'new' %}">Write</a>
@@ -38,9 +41,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'list' %}">List</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Details</a>
-                    </li>
+                    
                     
                 </ul>
                 <form class="d-flex" role="search">

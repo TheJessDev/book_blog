@@ -71,6 +71,8 @@ class PostCreateView(LoginRequiredMixin,CreateView):
 class PostDetailView(DetailView):
     template_name = "posts/details.html"
     model = Post
+    fields = ["book_title", "book_author", "post_author", "body"]
+    
 
 
 class PostUpdateView(UserPassesTestMixin, UpdateView):

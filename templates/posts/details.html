@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Details{% endblock title %}
+{% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
-<h1>Read the full review</h1>
+<h3>Review #{{ post.id }}</h3>
+<h1>Book - <strong>{{ post.book_title }}</strong></h1>
+<h2>Author - <stong>{{ post.book_author }}</stong></h2>
+<p>{{ post.body }}</p>
+<h5>Written by user: {{ post.post_author }}</h5>
+<p>Created {{ post.created_on }}</p>
+
+<a href="{% url 'list'%}"><button>Back</button></a>
 
 {% endblock content %}

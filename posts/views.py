@@ -5,11 +5,13 @@ from django.views.generic import (
     DetailView,
 )
 from .models import Post
-from django.urls import path
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.urls import path, reverse_lazy
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.shortcuts import redirect
+from django.contrib.auth.forms import UserCreationForm 
 
 
 
@@ -20,13 +22,26 @@ class LoginView(LoginView):
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
         user = authenticate(username=username, password=password)
+        
 
         if user is not None:
             login(self.request, user)
-            return redirect('home')
+            # authors = User.objects.exclude(id=user.id)
+            return redirect('list')
 
         return self.form_invalid(form)
 
+class SignupView(CreateView):
+    template_name = "registration/signup.html"
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        form.save()
+        username=form.cleaned_data.get("username")
+        password=form.cleaned_data.get("password1")
+        user=authenticate(username=username, password=password)
+        return super().form_valid(form)
 
 
 
@@ -35,9 +50,9 @@ class PostListView(ListView):
     template_name = "posts/lists.html"
     model = Post
 
-    # def test_func(self):
-    #     post = self.get_object()
-    #     return post.author == self.request.user
+    def test_func(self):
+        post = self.get_object()
+        return post.author == self.request.user
 
 class MyPostListView(ListView):
     template_name = "posts/my_lists.html"
@@ -48,7 +63,7 @@ class MyPostListView(ListView):
         queryset = queryset.filter(post_author=self.request.user)
         return queryset
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin,CreateView):
     template_name = "posts/create_post.html"
     model = Post
     fields = ["book_title", "book_author", "post_author", "body"]

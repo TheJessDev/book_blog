@@ -4,11 +4,14 @@
 
 
 {% block content %}
-<h1>Login to write a review!</h1>
+<h1>Sign up to write a review!</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p}} 
-    <button type="submit">Log in</button>
+    <button type="submit">Sign up</button>
 </form>
+
+
+<a class="btn btn-primary" href="{% url 'login' %}">Login</a>
 
 {% endblock content %}

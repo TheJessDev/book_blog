@@ -10,39 +10,56 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm 
+#from .forms import UserProfileForm
 
 
 
-class LoginView(LoginView):
-    template_name = 'posts/login.html'
+# class LoginView(LoginView):
+#     template_name = 'posts/login.html'
 
-    def form_valid(self, form):
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
-        user = authenticate(username=username, password=password)
+#     def form_valid(self, form):
+#         username = form.cleaned_data['username']
+#         password = form.cleaned_data['password']
+#         user = authenticate(username=username, password=password)
         
 
-        if user is not None:
-            login(self.request, user)
-            # authors = User.objects.exclude(id=user.id)
-            return redirect('list')
+#         if user is not None:
+#             login(self.request, user)
+#             # authors = User.objects.exclude(id=user.id)
+#             return redirect('list')
 
-        return self.form_invalid(form)
+#         return self.form_invalid(form)
 
-class SignupView(CreateView):
-    template_name = "registration/signup.html"
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
+# class SignupView(CreateView):
+#     template_name = "registration/signup.html"
+#     form_class = UserCreationForm
+#     success_url = reverse_lazy('login')
 
-    def form_valid(self, form):
-        form.save()
-        username=form.cleaned_data.get("username")
-        password=form.cleaned_data.get("password1")
-        user=authenticate(username=username, password=password)
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.save()
+#         username=form.cleaned_data.get("username")
+#         password=form.cleaned_data.get("password1")
+#         user=authenticate(username=username, password=password)
+#         return super().form_valid(form)
 
+# class ProfileView(LoginRequiredMixin, DetailView):
+#     model = UserProfile
+#     template_name = 'registration/user_profile.html'
+#     context_object_name = 'user_profile'
+
+#     def get_object(self, queryset=None):
+#         return self.request.user.userprofile
+
+# class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
+#     model = UserProfile
+#     form_class = UserProfileForm
+#     template_name = 'registration/profile_update.html'
+#     success_url = '/profile/'
+
+#     def get_object(self, queryset=None):
+#         return self.request.user.userprofile
 
 
 class PostListView(ListView):

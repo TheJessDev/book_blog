@@ -4,7 +4,7 @@ from django.views.generic import (
     UpdateView,
     DetailView,
 )
-from .models import Post
+from .models import Post, UserProfile
 from django.urls import path, reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView
@@ -12,7 +12,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm 
-#from .forms import UserProfileForm
+from .forms import UserProfileForm
+
 
 
 
@@ -44,22 +45,23 @@ from django.contrib.auth.forms import UserCreationForm
 #         user=authenticate(username=username, password=password)
 #         return super().form_valid(form)
 
-# class ProfileView(LoginRequiredMixin, DetailView):
-#     model = UserProfile
-#     template_name = 'registration/user_profile.html'
-#     context_object_name = 'user_profile'
 
-#     def get_object(self, queryset=None):
-#         return self.request.user.userprofile
+class ProfileView(LoginRequiredMixin, DetailView):
+    model = UserProfile
+    template_name = 'registration/user_profile.html'
+    context_object_name = 'user_profile'
 
-# class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
-#     model = UserProfile
-#     form_class = UserProfileForm
-#     template_name = 'registration/profile_update.html'
-#     success_url = '/profile/'
+    def get_object(self, queryset=None):
+        return self.request.user.userprofile
 
-#     def get_object(self, queryset=None):
-#         return self.request.user.userprofile
+class UserProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = UserProfileForm
+    form_class = UserProfileForm
+    template_name = 'registration/profile_update.html'
+    success_url = '/profile'
+
+    def get_object(self, queryset=None):
+        return self.request.user.userprofile
 
 
 class PostListView(ListView):

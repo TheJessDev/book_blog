@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.conf import settings
+
 
 
 class Status(models.Model):
@@ -34,14 +36,14 @@ class Post(models.Model):
 
 
 
-# class UserProfile(models.Model):
-#     user = models.ForeignKey(
-#         User, on_delete=models.CASCADE, related_name='profile'
-#     )
-#     bio = models.TextField(blank=True)
-#     profile_image = models.ImageField(upload_to='profile_images', blank=True)
-#     username = models.TextField()
-#     password = models.TextField()
+class UserProfile(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile'
+    )
+    bio = models.TextField(blank=True)
+    profile_image = models.ImageField(upload_to='profile_images', blank=True)
+    username = models.TextField()
+    password = models.TextField()
 
 # class CustomUser(AbstractUser):
 #     User = get_user_model()

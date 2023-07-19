@@ -4,11 +4,14 @@
 
 {% block content %}
 
-<h1>Welcome to your account profile!</h1>
-<form method = "post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+<img src="{{ user.profile_image }}" alt="broken img"/>
+<h1>Welcome {{ user.username }} to your account profile!</h1>
+<p>Your email is: {{ user.email }}</p>
+<p>Display your bio: {{ user.bio }}</p>
+
+<h3>Make changes</h3>
+
+<a class="btn btn-primary" href="{% url 'profile_update' %}">Update Profile</a>
+
 
 {% endblock content %}

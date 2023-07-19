@@ -3,9 +3,7 @@ from posts import views
 
 
 urlpatterns = [
-   # path("login/", views.LoginView.as_view(), name='login'),
-    #path("signup/", views.SignupView.as_view(), name='signup'),
-    #path("profile/", views.UserProfileUpdateView.as_view(), name='profile'),
+
     path("new/", views.PostCreateView.as_view(), name='new'),
     path("", views.PostListView.as_view(), name ='list'),
     path("my-list/", views.MyPostListView.as_view(), name ='my_list'),

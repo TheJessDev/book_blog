@@ -4,7 +4,9 @@
 
 {% block content %}
 
-<img src="{{ user.profile_image }}" alt="broken img"/>
+<div class="d-flex justify-content-center">
+    <img src="{{ user.profile_image.url }}" class="w-25" alt="broken img"/>
+</div>
 <h1>Welcome {{ user.username }} to your account profile!</h1>
 <p>Your email is: {{ user.email }}</p>
 <p>Display your bio: {{ user.bio }}</p>

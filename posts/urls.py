@@ -9,6 +9,7 @@ urlpatterns = [
     path("my-list/", views.MyPostListView.as_view(), name ='my_list'),
     path("edit/<int:pk>/", views.PostUpdateView.as_view(), name ='edit'),
     path("<int:pk>/details", views.PostDetailView.as_view(), name ='details'),
+    path("search/", views.PostSearchView.as_view(), name ='search'),
 ]
 
 

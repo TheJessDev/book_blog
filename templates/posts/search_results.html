@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Search results{% endblock title %}
+
+
+{% block content %}
+
+
+
+
+
+<div class="row">
+    {% for post in results %}
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.book_title }}</h5>
+                    <p class="card-text">{{ post.body | truncatechars:90 }}<a href="{% url 'details' post.pk %}"> Read more</a></p>
+                    
+                    {% if post.post_author == request.user %}
+                        <a href="{% url 'edit' post.pk %}" class="btn btn-primary">Edit</a>
+                        {% else %}
+                        <p> by: {{ post.post_author }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

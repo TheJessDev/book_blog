@@ -5,11 +5,12 @@
 
 {% block content %}
 <h1>Edit your profile</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p}} 
     <button type="submit">Submit</button>
 </form>
 
+<a href="{% url 'password_change' %}" class="btn btn-warning">Change Password</a>
 
 {% endblock content %}

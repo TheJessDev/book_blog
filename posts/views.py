@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm 
 from .forms import UserProfileForm
+from django.db.models import Q
 
 
 
@@ -104,6 +105,22 @@ class PostUpdateView(UserPassesTestMixin, UpdateView):
         return post.post_author == self.request.user
     
     
+class PostSearchView(ListView):
+    model = Post
+    template_name = 'posts/search_results.html'
+    context_object_name = 'results'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Post.objects.filter(
+                Q(book_title__icontains=query) |
+                Q(body__icontains=query) 
+                
+            )
+        else:
+            return []
+        
 
 
 

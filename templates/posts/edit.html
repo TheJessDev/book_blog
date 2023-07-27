@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 
 {% block title %}Edit{% endblock title %}
 
 {% block content %}
-<h1>Edit your review</h1>
+<div class="page_h1">
+    <h1>Edit your review</h1>
+</div>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Save" class="btn btn-warning">
+    <input type="Save" value="Save" class="btn">
 </form>
 
 {% endblock %}

@@ -1,6 +1,87 @@
-.navbar .base{
-    font-family: 'Short Stack', cursive !important;
-    color:lightblue !important;
-    background-color: grey !important;
+
+/* Color Theme # 1 Swatches in Hex */
+/* .The-Kingblade-Chronicles-1-hex { color: #2A3E59; }
+.The-Kingblade-Chronicles-2-hex { color: #4A593B; }
+.The-Kingblade-Chronicles-3-hex { color: #A67437; }
+.The-Kingblade-Chronicles-4-hex { color: #F2B66D; }
+.The-Kingblade-Chronicles-5-hex { color: #0D0D0D; } */
+
+/* #2 */
+
+
+
+
+
+nav {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
+
+/* Body Content container --------------------------*/
+.container {
+    background-color: rgb(202, 237, 248);
+    min-height: calc(100vh - 87px);
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    max-width: 100%;
+}
+
+/* All h1's ----------------------------------------*/
+.page_h1 {
+    background-color: lightsteelblue;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+
+/* (home)lists.html ------------------------------- */
+.navbar .base{
+    background-color: #2A3E59;   
+}
+a {
+    color: rgb(99, 203, 238) !important;
+}
+button.btn{
+    color: rgb(99, 203, 238);
+    border-color: rgb(99, 203, 238);
+}
+.button_trio {
+    background-color: grey;
+}
+
+/* details.html ------------------------------------*/
+.details_postNum {
+    display: none;
+}
+.details_h2 {
+    background-color: #a3c3ed;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.details_body {
+    background-color: beige;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+/* user_profile.html ------------------------------*/
+.userProfile {
+    background-color: lightgrey;
+}
+.updatePanel {
+    background-color: lightgrey;
+}
+
+/* Footer -----------------------------------------*/
+.foot {
+    background-color: #2A3E59;   
+}
+
+.foot a.foot_link {
+    color: lightgrey !important;
+    padding-left: 1.23%;
+
+}
+
+
 

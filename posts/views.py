@@ -86,7 +86,12 @@ class MyPostListView(ListView):
 class PostCreateView(LoginRequiredMixin,CreateView):
     template_name = "posts/create_post.html"
     model = Post
-    fields = ["book_title", "book_author", "post_author", "body"]
+    fields = ["book_title", "book_author", "body"]
+
+    def form_valid(self, form):
+        form.instance.post_author = self.request.user
+        return super().form_valid(form)
+
 
 class PostDetailView(DetailView):
     template_name = "posts/details.html"

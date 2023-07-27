@@ -1,15 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
-<h3>Review #{{ post.id }}</h3>
-<h1>Book - <strong>{{ post.book_title }}</strong></h1>
-<h2>Author - <stong>{{ post.book_author }}</stong></h2>
-<p>{{ post.body }}</p>
-<h5>Written by user: {{ post.post_author }}</h5>
-<p>Created {{ post.created_on }}</p>
+<div class="details_postNum">
+    <h3>Review #{{ post.id }}</h3>
+</div>
+<div class="page_h1">
+    <h1>Book - <strong>{{ post.book_title }}</strong></h1>
+</div>
+
+<h2 class="details_h2">Author - <stong>{{ post.book_author }}</stong></h2>
+
+<div class="details_body">
+    <p>{{ post.body }}</p>
+    <h6>Written by user: {{ post.post_author }}</h6>
+    <p>posted {{ post.created_on }}</p>
+</div>
 
 <a href="{% url 'list'%}"><button>Back</button></a>
 
 {% endblock content %}
+
+
+<!---------- use separate css ------------>

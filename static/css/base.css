@@ -19,7 +19,9 @@ nav {
 
 /* Body Content container --------------------------*/
 .container {
+    padding: 1.7%;
     background-color: rgb(202, 237, 248);
+    height: calc(100vh - 87px);
     min-height: calc(100vh - 87px);
     margin-right: 0 !important;
     margin-left: 0 !important;
@@ -34,12 +36,15 @@ nav {
 }
 
 
-/* (home)lists.html ------------------------------- */
+/* (home)lists.html & my-list.html------------------------------- */
 .navbar .base{
     background-color: #2A3E59;   
 }
 a {
     color: rgb(99, 203, 238) !important;
+}
+.h1_btnTrio {
+    background-color: lightgreen;
 }
 button.btn{
     color: rgb(99, 203, 238);
@@ -48,10 +53,28 @@ button.btn{
 .button_trio {
     background-color: grey;
 }
+.row {
+    background-color: rgb(209, 157, 209);
+    
+}
+.card.mb-5 {
+    background-color: rgb(250, 250, 113)!important;
+}
+
+
 
 /* details.html ------------------------------------*/
 .details_postNum {
     display: none;
+}
+.details_layout {
+    background-color: rgb(106, 203, 106);
+    border: 1.5px solid black !important; 
+    max-width: 66%;
+    padding: 3px;
+    margin-left: 20%;
+    margin-top: 3%;
+    height: 82% !important;   
 }
 .details_h2 {
     background-color: #a3c3ed;
@@ -60,17 +83,43 @@ button.btn{
 }
 .details_body {
     background-color: beige;
-    padding-left: 10px;
-    padding-top: 5px;
+    padding: 5%;
+    margin-top: 3dvb;
 }
 
+
 /* user_profile.html ------------------------------*/
+.d-flex justify-content-center img{
+   /* *** profile Image *** */
+}
 .userProfile {
     background-color: lightgrey;
+}
+.profile_text {
+    background-color: rgb(255, 255, 182);
 }
 .updatePanel {
     background-color: lightgrey;
 }
+.updatePanel_h5 {
+    background-color: rgb(243, 243, 174);
+}
+
+
+/* profile Update--------------------------------- */
+.container form {
+    max-width: 50%;
+    background-color: yellow;
+    margin-left: 25%;
+}
+.profileUpdate_Form {
+    background-color: rgb(205, 109, 109);
+}
+.updateChange_Btn {
+    background-color: rgb(35, 223, 35);
+    color:blue !important;
+}
+
 
 /* Footer -----------------------------------------*/
 .foot {

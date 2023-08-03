@@ -6,23 +6,31 @@
 {% block content %}
 
 <div class="d-flex justify-content-center">
-    {% if user.profile_image %}
-        <img src="{{ user.profile_image.url }}" class="w-25" alt="profile img"/>
-    {% else %}
-        <img src="https://plus.unsplash.com/premium_photo-1669652639356-f5cb1a086976?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
-        class="w-25" alt="broken img"/>
-    {% endif %}
+    
+        {% if user.profile_image %}
+            <img src="{{ user.profile_image.url }}" class="w-25" alt="profile img"/>
+        {% else %}
+            <img src="https://plus.unsplash.com/premium_photo-1669652639356-f5cb1a086976?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+            class="w-25" alt="broken img"/>
+        {% endif %}
+    
 </div>
 <div class="userProfile">
     <div class="page_h1">
         <h1>Welcome {{ user.username }} to your account profile!</h1>
     </div>
-    <p>Your email is: {{ user.email }}</p>
-    <p>Display your bio: {{ user.bio }}</p>
+    <div class="profile_text">
+        <p>Your email is: {{ user.email }}</p>
+        <p>Display your bio: {{ user.bio }}</p>
+    </div>
 </div>
 <div class="updatePanel">
-    <h5>Remeber to keep your profile up to date</h5>
-    <a class="btn btn-primary" href="{% url 'profile_update' %}">Update Profile</a>
+    <div class="updatePanel_h5">
+        <h5>Keep your profile up to date</h5>
+    </div>
+    <div class="updateBtn">
+        <a class="btn btn-primary" href="{% url 'profile_update' %}">Update Profile</a>
+    </div>
 </div>
 
 

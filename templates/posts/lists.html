@@ -7,16 +7,18 @@
 
 
 {% block content %}
-<div class="page_h1">
-    <h1>Check out these reviews!</h1>
-</div>
-<div class="button_trio">
-    {% if user.is_authenticated %}
-    <a href="{% url 'new' %}" class="btn"><button>Create</button></a>
-        <a href="{% url 'my_list' %}" class="btn"><button>My Reviews</button></a>
-        <a href="{% url 'profile_update' %}" class="btn"><button>My profile</button></a>
-        <a href="{% url 'logout' %}" class="btn"><button>Logout</button></a>
-    {% endif %}
+<div class="h1_btnTrio">
+    <div class="page_h1">
+        <h1>Check out these reviews!</h1>
+    </div>
+    <div class="button_trio">
+        {% if user.is_authenticated %}
+        <a href="{% url 'new' %}" class="btn"><button>Create</button></a>
+            <a href="{% url 'my_list' %}" class="btn"><button>My Reviews</button></a>
+            <a href="{% url 'profile_update' %}" class="btn"><button>My profile</button></a>
+            <a href="{% url 'logout' %}" class="btn"><button>Logout</button></a>
+        {% endif %}
+    </div>
 </div>
 
 <div class="row">

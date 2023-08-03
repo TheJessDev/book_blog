@@ -8,19 +8,38 @@
 <div class="details_postNum">
     <h3>Review #{{ post.id }}</h3>
 </div>
-<div class="page_h1">
-    <h1>Book - <strong>{{ post.book_title }}</strong></h1>
+<div class="button_trio">
+    {% if user.is_authenticated %}
+    <a href="{% url 'new' %}" class="btn"><button>Create</button></a>
+        <a href="{% url 'my_list' %}" class="btn"><button>My Reviews</button></a>
+        <a href="{% url 'profile_update' %}" class="btn"><button>My profile</button></a>
+        <a href="{% url 'logout' %}" class="btn"><button>Logout</button></a>
+    {% endif %}
+</div>
+<div class="details_layout">
+    <div class="page_h1">
+        <h1><strong>{{ post.book_title }}</strong></h1>
+    </div>
+
+    <h2 class="details_h2"><em>by {{ post.book_author }}</em></h2>
+
+    <div class="details_body">
+        <p>{{ post.body }}</p>
+        <h6>Written by {{ post.post_author }}</h6>
+        <p>{{ post.created_on }}</p>
+    </div>
 </div>
 
-<h2 class="details_h2">Author - <stong>{{ post.book_author }}</stong></h2>
+{% if user.is_authenticated %}
+<a href="{% url 'list'%}"><button>All Reviews</button></a>
+<a href="{% url 'my_list'%}"><button>Back</button></a>
 
-<div class="details_body">
-    <p>{{ post.body }}</p>
-    <h6>Written by user: {{ post.post_author }}</h6>
-    <p>posted {{ post.created_on }}</p>
-</div>
-
+{% else %}
 <a href="{% url 'list'%}"><button>Back</button></a>
+{% endif %}
+
+
+
 
 {% endblock content %}
 

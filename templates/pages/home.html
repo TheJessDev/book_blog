@@ -5,4 +5,16 @@
 
 {% block content %}
 <h1>Welcome to Book Blog!</h1>
+<p>"Welcome to our Book Review Hub – a place where readers become critics! 
+    Dive into the world of literature, unleash your thoughts, and share your 
+    captivating book reviews with fellow bibliophiles. Our platform empowers 
+    every book lover to express their unique perspectives, sparking engaging 
+    discussions, and discovering new literary gems. Join the community, voice 
+    your passion for books, and let your reviews guide others on their next 
+    reading adventure. Together, let's ignite the love for reading and celebrate 
+    the magic of storytelling!"</p>
+
+    <button class="home_about_btns"><a href="{% url 'about' %}"> About Us</a></button>
+<button class="home_about_btns"><a href="{% url 'list' %}">See Reviews</a></button>
+
 {% endblock content %}
